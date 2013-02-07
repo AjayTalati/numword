@@ -3,7 +3,7 @@
 '''
 numword
 '''
-__version__ = '0.4'
+__version__ = '0.4.1-polyconseil'
 
 import locale as _locale
 
