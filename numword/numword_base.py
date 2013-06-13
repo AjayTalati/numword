@@ -5,8 +5,13 @@ numword base
 '''
 
 import math
+import sys
 
-from orderedmapping import OrderedMapping
+from .orderedmapping import OrderedMapping
+
+
+if sys.version_info[0] >= 3:
+    long = int
 
 
 class NumWordBase(object):
@@ -162,9 +167,9 @@ class NumWordBase(object):
         Verify ordinal
         '''
         if not value == long(value):
-            raise TypeError, self.errmsg_floatord % (value)
+            raise TypeError(self.errmsg_floatord % value)
         if not abs(value) == value:
-            raise TypeError, self.errmsg_negord % (value)
+            raise TypeError(self.errmsg_negord % value)
 
     def _verify_num(self, value):
         '''

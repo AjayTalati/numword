@@ -2,10 +2,17 @@
 #This file is part of numword.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 
+import sys
 from unittest import TestCase
 
 
-class TestNumWordFR(TestCase):
+class CompatTestCase(TestCase):
+    if sys.version_info[0] == 2:
+        def assertRaisesRegex(self, *args, **kwargs):
+            return self.assertRaisesRegexp(*args, **kwargs)
+
+
+class TestNumWordFR(CompatTestCase):
 
     def test_cardinal(self):
         from numword.numword_fr import cardinal
@@ -20,7 +27,7 @@ class TestNumWordFR(TestCase):
     def test_cardinal_not_a_number(self):
         from numword.numword_fr import cardinal
         error = u"type\(Ximinez\) not in \[long, int, float\]"
-        with self.assertRaisesRegexp(TypeError, error):
+        with self.assertRaisesRegex(TypeError, error):
             cardinal('Ximinez')
 
     def test_cardinal_number_too_big(self):
@@ -29,11 +36,11 @@ class TestNumWordFR(TestCase):
         max_val = NumWordFR().maxval
         number = max_val + 1
         error = u"abs\(%s\) must be less than %s" % (number, max_val)
-        with self.assertRaisesRegexp(OverflowError, error):
+        with self.assertRaisesRegex(OverflowError, error):
             cardinal(number)
 
 
-class TestNumWordFR_BE(TestCase):
+class TestNumWordFR_BE(CompatTestCase):
 
     def test_cardinal(self):
         from numword.numword_fr_be import cardinal
@@ -43,7 +50,7 @@ class TestNumWordFR_BE(TestCase):
                          u"nonante-trois virgule septante-neuf")
 
 
-class TestNumWordEN(TestCase):
+class TestNumWordEN(CompatTestCase):
 
     def test_cardinal(self):
         from numword.numword_en import cardinal
@@ -58,7 +65,7 @@ class TestNumWordEN(TestCase):
     def test_cardinal_not_a_number(self):
         from numword.numword_fr import cardinal
         error = u"type\(Ximinez\) not in \[long, int, float\]"
-        with self.assertRaisesRegexp(TypeError, error):
+        with self.assertRaisesRegex(TypeError, error):
             cardinal('Ximinez')
 
     def test_cardinal_number_too_big(self):
@@ -67,5 +74,5 @@ class TestNumWordEN(TestCase):
         max_val = NumWordFR().maxval
         number = max_val + 1
         error = u"abs\(%s\) must be less than %s" % (number, max_val)
-        with self.assertRaisesRegexp(OverflowError, error):
+        with self.assertRaisesRegex(OverflowError, error):
             cardinal(number)

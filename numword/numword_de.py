@@ -4,7 +4,7 @@
 '''
 numword for DE
 '''
-from numword_eu import NumWordEU
+from .numword_eu import NumWordEU
 
 #//TODO: Use German error messages
 class NumWordDE(NumWordEU):
@@ -104,7 +104,7 @@ class NumWordDE(NumWordEU):
                 if nnum == 1:
                     ntext = u"eins"
                 ntext, ctext =  ntext, ctext
-            if cnum >= 10**6 and nnum <> 0:
+            if cnum >= 10**6 and nnum != 0:
                 ctext += " "
             val = cnum + nnum
 
@@ -276,12 +276,12 @@ def main():
             assert word == cardinal(number)
             i += 1
         except AssertionError:
-            print "Failed:'%s' != '%s' != '%s'" % \
-                (number, cardinal(number), word)
-            raise AssertionError, "At least one test failed!" \
-                " (Test no. %s of %s)" % (i, len(test_cardinals))
-    print "All %s tests for cardinal numbers successfully passed." \
-        % (len(test_cardinals))
+            print("Failed:'%s' != '%s' != '%s'" % \
+                (number, cardinal(number), word))
+            raise AssertionError("At least one test failed!" \
+                " (Test no. %s of %s)" % (i, len(test_cardinals)))
+    print("All %s tests for cardinal numbers successfully passed." \
+        % (len(test_cardinals)))
 
     test_years = [
             # Watch out, negative years are broken!
@@ -302,12 +302,12 @@ def main():
         try:
             assert word == year(number)
         except AssertionError:
-            print "Failed:'%s' != '%s' != '%s'" % \
-                (number, year(number), word)
-            raise AssertionError, "At least one test failed!" \
-                " (Test no. %s of %s)" % (i, len(test_years))
-    print "All %s tests for year numbers successfully passed." \
-        % (len(test_years))
+            print("Failed:'%s' != '%s' != '%s'" % \
+                (number, year(number), word))
+            raise AssertionError("At least one test failed!" \
+                " (Test no. %s of %s)" % (i, len(test_years)))
+    print("All %s tests for year numbers successfully passed." \
+        % (len(test_years)))
 
 
     test_currency =  [
@@ -322,12 +322,12 @@ def main():
         try:
             assert word == currency(number)
         except AssertionError:
-            print "Failed:'%s' != '%s' != '%s'" % \
-                (number, currency(number), word)
-            raise AssertionError, "At least one test failed!" \
-                " (Test no. %s of %s)" % (i, len(test_currency))
-    print "All %s tests for currency numbers successfully passed." \
-        % (len(test_currency))
+            print("Failed:'%s' != '%s' != '%s'" % \
+                (number, currency(number), word))
+            raise AssertionError("At least one test failed!" \
+                " (Test no. %s of %s)" % (i, len(test_currency)))
+    print("All %s tests for currency numbers successfully passed." \
+        % (len(test_currency)))
 
     test_ordinal =  [
             [1, u"erste"],
@@ -371,12 +371,12 @@ def main():
         try:
             assert word == ordinal(number)
         except AssertionError:
-            print "Failed:'%s' != '%s' != '%s'" % \
-                (number, ordinal(number), word)
-            raise AssertionError, "At least one test failed!" \
-                " (Test no. %s of %s)" % (i, len(test_ordinal))
-    print "All %s tests for ordinal numbers successfully passed." \
-        % (len(test_ordinal))
+            print("Failed:'%s' != '%s' != '%s'" % \
+                (number, ordinal(number), word))
+            raise AssertionError("At least one test failed!" \
+                " (Test no. %s of %s)" % (i, len(test_ordinal)))
+    print("All %s tests for ordinal numbers successfully passed." \
+        % (len(test_ordinal)))
 
 
 if __name__ == "__main__":
