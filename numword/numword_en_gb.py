@@ -4,6 +4,8 @@
 numword for EN_GB
 '''
 
+from __future__ import unicode_literals
+
 from .numword_en import NumWordEN
 
 
@@ -16,8 +18,8 @@ class NumWordENGB(NumWordEN):
         '''
         Convert to currency
         '''
-        return self._split(val, hightxt=u"pound/s", lowtxt=u"pence",
-                                jointxt=u"and", longval=longval)
+        return self._split(val, hightxt="pound/s", lowtxt="pence",
+                                jointxt="and", longval=longval)
 
 _NW = NumWordENGB()
 

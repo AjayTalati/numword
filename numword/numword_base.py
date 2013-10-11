@@ -4,6 +4,8 @@
 numword base
 '''
 
+from __future__ import unicode_literals
+
 import math
 import sys
 
@@ -24,12 +26,12 @@ class NumWordBase(object):
         self.is_title = False
         self.precision = 2
         self.exclude_title = []
-        self.negword = u"(-) "
-        self.pointword = u"(.)"
-        self.errmsg_nonnum = u"type(%s) not in [long, int, float]"
-        self.errmsg_floatord = u"Cannot treat float %s as ordinal."
-        self.errmsg_negord = u"Cannot treat negative num %s as ordinal."
-        self.errmsg_toobig = u"abs(%s) must be less than %s."
+        self.negword = "(-) "
+        self.pointword = "(.)"
+        self.errmsg_nonnum = "type(%s) not in [long, int, float]"
+        self.errmsg_floatord = "Cannot treat float %s as ordinal."
+        self.errmsg_negord = "Cannot treat negative num %s as ordinal."
+        self.errmsg_toobig = "abs(%s) must be less than %s."
 
         self.high_numwords = None
         self.mid_numwords = None
@@ -299,24 +301,24 @@ class NumWordBase(object):
         try:
             _card = self.cardinal(value)
         except:
-            _card = u"invalid"
+            _card = "invalid"
         try:
             _ord = self.ordinal(value)
         except:
-            _ord = u"invalid"
+            _ord = "invalid"
         try:
             _ordnum = self.ordinal_number(value)
         except:
-            _ordnum = u"invalid"
+            _ordnum = "invalid"
         try:
             _curr = self.currency(value)
         except:
-            _curr = u"invalid"
+            _curr = "invalid"
         try:
             _year = self.year(value)
         except:
-            _year = u"invalid"
-        print (u"For %s, cardinal is %s;\n" \
+            _year = "invalid"
+        print ("For %s, cardinal is %s;\n" \
                 "\tordinal is %s;\n" \
                 "\tordinal number is %s;\n" \
                 "\tcurrency is %s;\n" \
