@@ -5,7 +5,7 @@
 from setuptools import setup
 import numword
 
-setup(name='numword',
+setup(name='numword-polyconseil',
         version=numword.__version__,
         author='B2CK',
         author_email='info@b2ck.com',
